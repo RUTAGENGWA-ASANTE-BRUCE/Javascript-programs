@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .full {
+            background-color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="myForm">Palindrome finder! &nbsp;</h1>
+    <form>
+        <label>Phrase<input type="text" id="text" style="width: 30%;"></label><br>
+        <label>Length<input type="number" id="min" style="width: 5%;"></label>&nbsp;
+        <label>to<input type="number" id="max" style="width: 5%;"></label><br>
+        <button onclick="findPalindrome ()" type="button">Find Palindromes</button>
+    </form>
+    <p id="hello"></p>
+    <p id="number"></p>
+    <script>
+        function findPalindrome () {
+            var words = document.getElementById("text").value.split(" ")
+            var newList = document.createElement("ul")
+            var palindrome = []
+            var max = document.getElementById("max").value
+            var min = document.getElementById("min").value
+            for (var i = 0; i < words.length; i++)
+            {
+                var reversed = words[i].split("").reverse().join("")
+                {
+                    if (words[i].length != 1)
+                    {
+
+
+                        if (words[i] == reversed && max != "" && min != "" && words[i].length <= max && words[i].length >= min)
+                        {
+                            palindrome.push(words[i])
+                            var newItem = document.createElement("li")
+                            var newText = document.createTextNode(words[i])
+                            newItem.appendChild(newText)
+                            newItem.setAttribute("class", "full")
+                            newList.appendChild(newItem)
+                        }
+                        /*
+                        else if (words[i] == reversed && min != "" && words[i].length >= min)
+                        {
+                            palindrome.push(words[i])
+                            var newItem = document.createElement("li")
+                            var newText = document.createTextNode(words[i])
+                            newItem.appendChild(newText)
+                            newItem.setAttribute("class", "full")
+                            newList.appendChild(newItem)
+                        }
+                        else if (words[i] == reversed && max != "" && words[i].length <= max)
+                        {
+                            palindrome.push(words[i])
+                            var newItem = document.createElement("li")
+                            var newText = document.createTextNode(words[i])
+                            newItem.appendChild(newText)
+                            newItem.setAttribute("class", "full")
+                            newList.appendChild(newItem)
+                        }
+
+                        else
+                        {
+                            if (words[i] == reversed)
+                            {
+
+                                palindrome.push(words[i])
+                                var newItem = document.createElement("li")
+                                var newText = document.createTextNode(words[i])
+                                newItem.appendChild(newText)
+                                newItem.setAttribute("class", "full")
+                                newList.appendChild(newItem)
+
+                            }
+
+
+                        } */
+                    }
+                    else
+                    {
+                        palindrome.push(words[i])
+                        var newItem = document.createElement("li")
+                        var newText = document.createTextNode(words[i])
+                        newItem.appendChild(newText)
+                        newList.appendChild(newItem)
+                    }
+                }
+            }
+            var newP = document.createElement("p")
+            var newT = document.createTextNode(palindrome.length + " palindrome(s) found")
+            newP.appendChild(newT)
+
+            document.getElementById("hello").parentNode.appendChild(newList)
+            document.getElementById("hello").parentNode.appendChild(newP)
+        }
+    </script>
+</body>
+
+</html>
