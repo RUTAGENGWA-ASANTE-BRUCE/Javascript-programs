@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .take {
+            border: 1px solid red;
+            border-style: dashed;
+            color: red;
+        }
+    </style>
+</head>
+
+<body id="body">
+
+    <h1 id="myForm">Sentence Reverser! &nbsp;</h1>
+    <form>
+        <label>Phrase:<input type="text" id="text"></label><br>
+        <label>Filter:<input type="text" id="filterer"></label><br>
+        <button onclick="submitText()" type="button">Go</button>
+    </form>
+    <p id="hello"></p>
+    <p id="removed"></p>
+    <script>
+
+        function submitText () {
+            var phrase
+
+            phrase = document.getElementById("text").value
+            var words = phrase.split(" ").reverse()
+            var paragraph = document.getElementById("hello")
+            var removed = document.getElementById("removed")
+            var filterText = document.getElementById("filterer").value
+            var parent = document.getElementById("hello")
+            newWords = words.filter(word => !word.includes(filterText))
+            removed.innerHTML = words.length - newWords.length + " words(s) filtered out"
+            words = newWords
+            console.log(words)
+
+            for (var i = 0; i < words.length; i++)
+            {
+                var span = document.createElement("span")
+                var newText = document.createTextNode(words[i])
+
+                span.appendChild(newText)
+                span.setAttribute("class", "take")
+                paragraph.appendChild(span)
+                paragraph.append(" ")
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>
